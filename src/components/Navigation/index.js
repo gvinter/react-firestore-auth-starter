@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthUserContext } from 'components/base/Session';
-import SignOutButton from 'components/SignOut';
+import SignOutButton from 'components/views/auth/SignOut';
 import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
 
@@ -22,6 +22,9 @@ const NavigationAuth = ({ authUser }) => (
   <ul>
     <li>
       <Link to={ROUTES.HOME}>Home</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.THINGS}>Things</Link>
     </li>
     <li>
       <Link to={ROUTES.PRIVACY}>Privacy</Link>
@@ -44,6 +47,9 @@ const NavigationNonAuth = () => (
   <ul>
     <li>
       <Link to={ROUTES.HOME}>Home</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.THINGS}>Things</Link>
     </li>
     <li>
       <Link to={ROUTES.PRIVACY}>Privacy</Link>

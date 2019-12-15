@@ -11,7 +11,8 @@ import JoinPage from 'pages/auth/join';
 import SignInPage from 'pages/auth/sign-in';
 import ForgotPasswordPage from 'pages/auth/forgot-password';
 
-import GuidePage from 'pages/guide';
+import ThingsPage from 'pages/things';
+import ThingPage from 'pages/thing';
 
 import ProfilePage from 'pages/user';
 import SettingsPage from 'pages/user/settings';
@@ -41,8 +42,9 @@ const App = () => (
         component={ForgotPasswordPage}
       />
 
-      {/* Guide */}
-      <Route path={ROUTES.GUIDE} component={GuidePage} />
+      {/* Things */}
+      <Route path={ROUTES.THINGS} component={ThingsPage} />
+      <Route path={ROUTES.THING} component={ThingPage} />
 
       {/* User */}
       <Route path={ROUTES.PROFILE} component={ProfilePage} />
