@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
 
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Button,
+  ButtonGroup,
+  Box,
+} from '@chakra-ui/core';
+
 class MessageItem extends Component {
   constructor(props) {
     super(props);
@@ -33,40 +44,60 @@ class MessageItem extends Component {
 
     return (
       <li>
-        {editMode ? (
-          <input
-            type="text"
-            value={editText}
-            onChange={this.onChangeEditText}
-          />
-        ) : (
-          <span>
-            <strong>{message.userId}</strong> {message.text}
-            {message.editedAt && <span>(Edited)</span>}
-          </span>
-        )}
+        <Box maxW="sm" borderWidth="1px" rounded="lg" p={3}>
+          {editMode ? (
+            <Input
+              type="text"
+              value={editText}
+              onChange={this.onChangeEditText}
+            />
+          ) : (
+            <p>
+              <strong>{message.text}</strong> <br />
+              {message.userId}
+            </p>
+          )}
 
-        {authUser.uid === message.userId && (
-          <span>
-            {editMode ? (
-              <span>
-                <button onClick={this.onSaveEditText}>Save</button>
-                <button onClick={this.onToggleEditMode}>Reset</button>
-              </span>
-            ) : (
-              <button onClick={this.onToggleEditMode}>Edit</button>
-            )}
+          <ButtonGroup spacing={3}>
+            {authUser.uid === message.userId && (
+              <>
+                {editMode ? (
+                  <>
+                    <Button
+                      variant="ghost"
+                      onClick={this.onSaveEditText}
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      onClick={this.onToggleEditMode}
+                    >
+                      Cancel
+                    </Button>
+                  </>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    onClick={this.onToggleEditMode}
+                  >
+                    Edit
+                  </Button>
+                )}
 
-            {!editMode && (
-              <button
-                type="button"
-                onClick={() => onRemoveMessage(message.uid)}
-              >
-                Delete
-              </button>
+                {!editMode && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={() => onRemoveMessage(message.uid)}
+                  >
+                    Delete
+                  </Button>
+                )}
+              </>
             )}
-          </span>
-        )}
+          </ButtonGroup>
+        </Box>
       </li>
     );
   }

@@ -1,8 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import * as ROUTES from 'constants/routes';
 
-import Navigation from 'components/Navigation';
+// Theme
+import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import theme from 'config/theme';
 
+// Pages
 import HomePage from 'pages/home';
 import PrivacyPage from 'pages/privacy';
 import TermsPage from 'pages/terms';
@@ -19,40 +23,47 @@ import SettingsPage from 'pages/user/settings';
 
 import AdminPage from 'pages/admin';
 
-import * as ROUTES from 'constants/routes';
+// Components
 import { withAuthentication } from 'components/base/Session';
+import Navigation from 'components/Navigation';
+import Footer from 'components/Footer';
 
 const App = () => (
   <Router>
-    <div>
-      <Navigation />
+    <ThemeProvider theme={theme}>
+      <CSSReset />
+      <div>
+        <Navigation />
 
-      <hr />
+        <hr />
 
-      {/* Static */}
-      <Route path={ROUTES.HOME} component={HomePage} exact />
-      <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
-      <Route path={ROUTES.TERMS} component={TermsPage} />
+        {/* Static */}
+        <Route path={ROUTES.HOME} component={HomePage} exact />
+        <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+        <Route path={ROUTES.TERMS} component={TermsPage} />
 
-      {/* Auth */}
-      <Route path={ROUTES.JOIN} component={JoinPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route
-        path={ROUTES.FORGOT_PASSWORD}
-        component={ForgotPasswordPage}
-      />
+        {/* Auth */}
+        <Route path={ROUTES.JOIN} component={JoinPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPasswordPage}
+        />
 
-      {/* Things */}
-      <Route path={ROUTES.THINGS} component={ThingsPage} />
-      <Route path={ROUTES.THING} component={ThingPage} />
+        {/* Things */}
+        <Route path={ROUTES.THINGS} component={ThingsPage} />
+        <Route path={ROUTES.THING} component={ThingPage} />
 
-      {/* User */}
-      <Route path={ROUTES.PROFILE} component={ProfilePage} />
-      <Route path={ROUTES.SETTINGS} component={SettingsPage} />
+        {/* User */}
+        <Route path={ROUTES.PROFILE} component={ProfilePage} />
+        <Route path={ROUTES.SETTINGS} component={SettingsPage} />
 
-      {/* Admin */}
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
-    </div>
+        {/* Admin */}
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
+
+        <Footer />
+      </div>
+    </ThemeProvider>
   </Router>
 );
 

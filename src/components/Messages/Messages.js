@@ -4,6 +4,16 @@ import { AuthUserContext } from 'components/base/Session';
 import { withFirebase } from 'components/base/Firebase';
 import MessageList from './MessageList';
 
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Button,
+  Box,
+} from '@chakra-ui/core';
+
 class Messages extends Component {
   constructor(props) {
     super(props);
@@ -111,18 +121,33 @@ class Messages extends Component {
 
             {!messages && <div>There are no messages ...</div>}
 
-            <form
-              onSubmit={event =>
-                this.onCreateMessage(event, authUser)
-              }
-            >
-              <input
-                type="text"
-                value={text}
-                onChange={this.onChangeText}
-              />
-              <button type="submit">Send</button>
-            </form>
+            <Box maxW="sm" mt={5}>
+              <form
+                onSubmit={event =>
+                  this.onCreateMessage(event, authUser)
+                }
+              >
+                <FormControl>
+                  <FormLabel htmlFor="email">
+                    Put message here:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    id="email"
+                    aria-describedby="helper-text"
+                    value={text}
+                    onChange={this.onChangeText}
+                  />
+                  <FormHelperText id="helper-text">
+                    Form text input helper
+                  </FormHelperText>
+                </FormControl>
+
+                <Button variantColor="green" type="submit" mt={5}>
+                  Send
+                </Button>
+              </form>
+            </Box>
           </div>
         )}
       </AuthUserContext.Consumer>
