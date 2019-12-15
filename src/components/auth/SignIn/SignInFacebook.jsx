@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import { withFirebase } from 'components/base/Firebase';
 import * as ROUTES from 'constants/routes';
-
+import { Button } from '@chakra-ui/core';
 import {
   ERROR_CODE_ACCOUNT_EXISTS,
   ERROR_MSG_ACCOUNT_EXISTS,
-} from 'components/view/auth';
+} from 'components/auth/constants';
 
 class SignInFacebookBase extends Component {
   constructor(props) {
@@ -50,7 +50,9 @@ class SignInFacebookBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Facebook</button>
+        <Button w="100%" type="submit" variantColor="facebook">
+          Sign In with Facebook
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>

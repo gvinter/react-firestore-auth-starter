@@ -35,6 +35,7 @@ const Navigation = () => (
             <Link to={ROUTES.HOME}>App Name</Link>
           </Text>
           <NavLink to={ROUTES.THINGS}>Things</NavLink>
+          <NavLink to={ROUTES.MESSAGES}>Messages</NavLink>
         </Flex>
 
         <Box>

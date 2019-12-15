@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import { withFirebase } from 'components/base/Firebase';
+import { PasswordForgetLink } from 'components/auth/PasswordForget';
 import * as ROUTES from 'constants/routes';
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Button,
+  Box,
+  Heading,
+} from '@chakra-ui/core';
+
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  error: null,
+};
 
 class SignInFormBase extends Component {
   constructor(props) {
@@ -38,35 +55,45 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
+        <Heading as="h2" fontWeight="500" fontSize="lg" mb={3}>
+          Or sign in with email
+        </Heading>
+        <FormControl mb={3}>
+          <Input
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            placeholder="Email address"
+          />
+        </FormControl>
+
+        <FormControl>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.onChange}
+            placeholder="password"
+          />
+        </FormControl>
+
+        <Button
+          disabled={isInvalid}
+          variantColor="blue"
+          type="submit"
+          mt={5}
+        >
           Sign In
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
+
+        <PasswordForgetLink />
       </form>
     );
   }
 }
-
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
-};
 
 const SignInForm = compose(
   withRouter,

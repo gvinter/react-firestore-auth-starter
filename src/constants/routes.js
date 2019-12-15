@@ -1,4 +1,5 @@
 export const HOME = '/';
+export const MESSAGES = '/messages';
 export const PRIVACY = '/privacy';
 export const TERMS = '/terms';
 

@@ -8,6 +8,7 @@ import theme from 'config/theme';
 
 // Pages
 import HomePage from 'pages/home';
+import MessagesPage from 'pages/messages';
 import PrivacyPage from 'pages/privacy';
 import TermsPage from 'pages/terms';
 
@@ -39,6 +40,11 @@ const App = () => (
 
         {/* Static */}
         <Route path={ROUTES.HOME} component={HomePage} exact />
+        <Route
+          path={ROUTES.MESSAGES}
+          component={MessagesPage}
+          exact
+        />
         <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
         <Route path={ROUTES.TERMS} component={TermsPage} />
 

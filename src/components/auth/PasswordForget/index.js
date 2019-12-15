@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from 'components/base/Firebase';
 import * as ROUTES from 'constants/routes';
 
+import { Text } from '@chakra-ui/core';
+
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -67,9 +69,9 @@ class PasswordForgetFormBase extends Component {
 }
 
 const PasswordForgetLink = () => (
-  <p>
+  <Text mt={5} fontSize="sm">
     <Link to={ROUTES.FORGOT_PASSWORD}>Forgot Password?</Link>
-  </p>
+  </Text>
 );
 
 export default PasswordForgetPage;

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import { withFirebase } from 'components/base/Firebase';
 import * as ROUTES from 'constants/routes';
+
+import { Button } from '@chakra-ui/core';
 
 import {
   ERROR_CODE_ACCOUNT_EXISTS,
   ERROR_MSG_ACCOUNT_EXISTS,
-} from 'components/view/auth';
+} from 'components/auth/constants';
 
 class SignInTwitterBase extends Component {
   constructor(props) {
@@ -50,7 +52,9 @@ class SignInTwitterBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Twitter</button>
+        <Button w="100%" type="submit" variantColor="twitter">
+          Sign In with Twitter
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>

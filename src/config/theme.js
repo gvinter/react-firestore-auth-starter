@@ -20,7 +20,21 @@ export default {
     '5xl': '3rem',
     '6xl': '4rem',
   },
-  // colors: {
-  //   ...theme.colors,
-  // }
+  colors: {
+    ...theme.colors,
+    google: {
+      // TODO: make range of Google colors for button states
+      // https://brandpalettes.com/google-colors/
+      50: '#4285F4',
+      100: '#4285F4',
+      200: '#4285F4',
+      300: '#4285F4',
+      400: '#4285F4',
+      500: '#4285F4',
+      600: '#4285F4',
+      700: '#4285F4',
+      800: '#4285F4',
+      900: '#4285F4',
+    },
+  },
 };
