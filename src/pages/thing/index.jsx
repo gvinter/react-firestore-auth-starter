@@ -27,7 +27,7 @@ const ThingPage = ({ location, firebase }) => {
       .catch(function(error) {
         console.log('Error getting document:', error);
       });
-  }, [firebase]);
+  }, [firebase, thingId]);
 
   return (
     <div>

@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Button,
-  ButtonGroup,
-  Box,
-} from '@chakra-ui/core';
+import { Input, Button, ButtonGroup, Box } from '@chakra-ui/core';
 
 class MessageItem extends Component {
   constructor(props) {

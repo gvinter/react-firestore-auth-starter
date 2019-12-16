@@ -4,16 +4,7 @@ import { compose } from 'recompose';
 import { withFirebase } from 'components/base/Firebase';
 import { PasswordForgetLink } from 'components/auth/PasswordForget';
 import * as ROUTES from 'constants/routes';
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Button,
-  Box,
-  Heading,
-} from '@chakra-ui/core';
+import { FormControl, Input, Button, Heading } from '@chakra-ui/core';
 
 const INITIAL_STATE = {
   email: '',

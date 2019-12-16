@@ -1,11 +1,6 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
+import React from 'react';
 
 import { SignUpLink } from 'components/auth/SignUp';
-
-import { withFirebase } from 'components/base/Firebase';
-import * as ROUTES from 'constants/routes';
 
 import SignInForm, {
   SignInGoogle,
@@ -13,7 +8,7 @@ import SignInForm, {
   SignInTwitter,
 } from 'components/auth/SignIn';
 
-import { Flex, Heading, Box, Text, Divider } from '@chakra-ui/core';
+import { Flex, Heading, Box, Divider } from '@chakra-ui/core';
 
 const SignInPage = () => (
   <Box mx="auto" maxWidth="xs" my={10}>

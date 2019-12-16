@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { withFirebase } from 'components/base/Firebase';
 import * as ROUTES from 'constants/routes';
-import * as ROLES from 'constants/roles';
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Button,
-  Box,
-  Heading,
-} from '@chakra-ui/core';
+import { FormControl, Input, Button } from '@chakra-ui/core';
 
 const INITIAL_STATE = {
   name: '',
