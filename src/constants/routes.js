@@ -7,7 +7,8 @@ export const JOIN = '/auth/join';
 export const SIGN_IN = '/auth/signin';
 export const FORGOT_PASSWORD = '/auth/forgot-password';
 
-export const THING = '/thing';
+export const THING = '/thing/:id';
+export const THINGS_NEW = '/things/new';
 export const THINGS = '/things';
 
 export const PROFILE = '/profile/:id';

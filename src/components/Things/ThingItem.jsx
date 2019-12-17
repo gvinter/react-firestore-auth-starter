@@ -5,7 +5,7 @@ const ThingItem = ({ authUser, thing, onRemoveThing }) => {
   return (
     <>
       <Link to={`/thing/${thing.uid}`}>
-        <strong>{thing.name}</strong>
+        <strong>{thing.title}</strong>
       </Link>
 
       <p>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { withFirebase } from 'components/base/Firebase';
 
+import { Heading, Box, Text } from '@chakra-ui/core';
+
 const ThingPage = ({ location, firebase }) => {
   const thingId = location.pathname.replace('/thing/', '');
 
-  const [thing, setThing] = useState(null);
+  const [thing, setThing] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -29,13 +31,21 @@ const ThingPage = ({ location, firebase }) => {
       });
   }, [firebase, thingId]);
 
-  return (
-    <div>
-      <h1>Thing Page</h1>
+  if (loading) {
+    return (
+      <Box m="50px auto" maxWidth="950px">
+        <Box>Loading!</Box>
+      </Box>
+    );
+  }
 
-      {loading && 'Loading!'}
-      {thing && <p>{thing.name}</p>}
-    </div>
+  const { title, userId } = thing;
+
+  return (
+    <Box m="50px auto" maxWidth="950px">
+      <Heading>{title}</Heading>
+      <Text>user id: {userId}</Text>
+    </Box>
   );
 };
 

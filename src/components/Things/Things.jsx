@@ -25,7 +25,7 @@ class Things extends Component {
 
     this.unsubscribe = this.props.firebase
       .things()
-      .orderBy('createdAt', 'desc')
+      // .orderBy('createdAt', 'desc')
       .limit(this.state.limit)
       .onSnapshot(snapshot => {
         if (snapshot.size) {
@@ -47,22 +47,6 @@ class Things extends Component {
   componentWillUnmount() {
     this.unsubscribe();
   }
-
-  onChangeText = event => {
-    this.setState({ text: event.target.value });
-  };
-
-  onCreateThing = (event, authUser) => {
-    this.props.firebase.things().add({
-      text: this.state.text,
-      userId: authUser.uid,
-      createdAt: this.props.firebase.fieldValue.serverTimestamp(),
-    });
-
-    this.setState({ text: '' });
-
-    event.preventDefault();
-  };
 
   onEditThing = (thing, text) => {
     const { uid, ...thingSnapshot } = thing;
@@ -86,7 +70,7 @@ class Things extends Component {
   };
 
   render() {
-    const { text, things, loading } = this.state;
+    const { things, loading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
@@ -110,17 +94,6 @@ class Things extends Component {
             )}
 
             {!things && <div>There are no things ...</div>}
-
-            <form
-              onSubmit={event => this.onCreateThing(event, authUser)}
-            >
-              <input
-                type="text"
-                value={text}
-                onChange={this.onChangeText}
-              />
-              <button type="submit">Send</button>
-            </form>
           </div>
         )}
       </AuthUserContext.Consumer>

@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { AuthUserContext } from 'components/base/Session';
 import { withFirebase } from 'components/base/Firebase';
 
-import { ThingsList } from 'components/Things';
+import Things from 'components/Things';
+
+import { Heading, Button, Box } from '@chakra-ui/core';
 
 const ThingsPage = ({ firebase }) => {
   const [things, setThings] = useState(null);
@@ -34,14 +36,23 @@ const ThingsPage = ({ firebase }) => {
         }
       });
   }, [firebase]);
+
   console.log(things);
+
   return (
-    <div>
-      <h1>Things Page</h1>
-      <p>The Things Page is accessible by every signed in user.</p>
-      {loading && 'Loading!'}
-      <ThingsList authUser={authUser} things={things} />
-    </div>
+    <Box m="50px auto" maxWidth="950px">
+      <Heading>Things Page</Heading>
+      <Link to="/things/new">
+        <Button>New Thing</Button>
+      </Link>
+      <Box my={5}>
+        <p>The Things Page is accessible by every signed in user.</p>
+      </Box>
+      {loading && <Box my={5}>'Loading!'</Box>}
+      <Box my={5}>
+        <Things authUser={authUser} things={things} />
+      </Box>
+    </Box>
   );
 };
 

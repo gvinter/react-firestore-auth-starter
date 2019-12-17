@@ -16,8 +16,10 @@ import JoinPage from 'pages/auth/join';
 import SignInPage from 'pages/auth/sign-in';
 import ForgotPasswordPage from 'pages/auth/forgot-password';
 
+// Things
 import ThingsPage from 'pages/things';
 import ThingPage from 'pages/thing';
+import NewThingPage from 'pages/things/new';
 
 import ProfilePage from 'pages/user';
 import SettingsPage from 'pages/user/settings';
@@ -57,7 +59,12 @@ const App = () => (
         />
 
         {/* Things */}
-        <Route path={ROUTES.THINGS} component={ThingsPage} />
+        <Route path={ROUTES.THINGS} component={ThingsPage} exact />
+        <Route
+          path={ROUTES.THINGS_NEW}
+          component={NewThingPage}
+          exact
+        />
         <Route path={ROUTES.THING} component={ThingPage} />
 
         {/* User */}
